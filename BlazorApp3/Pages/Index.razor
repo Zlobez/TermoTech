@@ -1,0 +1,213 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+@inject NotificationService NotificationService
+@using Microsoft.AspNetCore.Components
+@using System.ComponentModel.DataAnnotations
+
+
+
+<!-- Hero Section с максимально ярким фоном  -->
+
+<section style="background: linear-gradient(rgba(102, 126, 234, 0.0), rgba(50, 102, 234, 0.0)), url('/images/hero-bg.jpg');
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              color: white;
+              padding: 150px 0;
+              text-align: center;
+              position: relative;">
+
+    <div class="container">
+    </div>
+     <div class="glass-section">
+        <div class="glass-container">
+            <div class="container">
+                <RadzenText Style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #ffffff; text-shadow: 4px 4px 8px rgba(0,0,0,0.8);" Tag="h1">Автоматизация элеваторов</RadzenText>
+                <div class="cards-grid">
+                    <RadzenCard Class="glass-card">
+                        <RadzenText Style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; text-shadow: 2px 2px 6px rgba(0,0,0,0.7); font-weight: 600;" Tag="p">Полный цикл услуг: от монтажа оборудования до разработки ПО и аудита телеметрии</RadzenText>
+                    </RadzenCard>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-section">
+        <div class="glass-container">
+            <div class="container">
+                <RadzenText Class="section-title" Tag="h2">О компании</RadzenText>
+                <div class="cards-grid">
+                        <RadzenCard Class="glass-card">
+                            <RadzenText Class="service-title" Tag="h3">Технологии для вашего роста</RadzenText>
+                            <RadzenText Class="process-title" Tag="p">
+                                Мы специализируемся на комплексной автоматизации элеваторного комплекса. Наша цель — повысить эффективность, безопасность и прозрачность ваших бизнес-процессов с помощью современных решений.
+                            </RadzenText>
+                        </RadzenCard>
+                        <RadzenCard Class="glass-card">
+                            <div class="stats-icon">🏗️</div>
+                            <RadzenText Class="service-title" Tag="h3">Опыт более 10 лет</RadzenText>
+                            <RadzenText Class="process-title" Tag="p">Реализовали проекты для 50+ элеваторов по всей стране</RadzenText>
+                        </RadzenCard>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-section">
+        <div class="glass-container">
+            <div class="container">
+                <RadzenText Class="section-title" Tag="h2">Наши услуги</RadzenText>
+                <div class="cards-grid">
+                    <RadzenCard Class="glass-card">
+                        <div class="service-icon">⚙️</div>
+                        <RadzenText Class="service-title" Tag="h3">Монтаж оборудования</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Профессиональная установка и наладка датчиков, контроллеров и систем управления элеватором.</RadzenText>
+                        <RadzenButton Class="card-button" ButtonStyle="ButtonStyle.Light" Text="Подробнее" Click="@(() => ShowServiceDetails("Монтаж оборудования"))" />
+                    </RadzenCard>
+                    <RadzenCard Class="glass-card">
+                        <div class="service-icon">📊</div>
+                        <RadzenText Class="service-title" Tag="h3">Аудит телеметрии</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Анализ существующих систем сбора данных, выявление узких мест и формирование рекомендаций по улучшению.</RadzenText>
+                        <RadzenButton Class="card-button" ButtonStyle="ButtonStyle.Light" Text="Подробнее" Click="@(() => ShowServiceDetails("Аудит телеметрии"))" />
+                    </RadzenCard>
+                    <RadzenCard Class="glass-card">
+                        <div class="service-icon">💻</div>
+                        <RadzenText Class="service-title" Tag="h3">Разработка ПО</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Создание SCADA-систем, ПО для автоматизации взвешивания, учета и управления элеватором.</RadzenText>
+                        <RadzenButton Class="card-button" ButtonStyle="ButtonStyle.Light" Text="Подробнее" Click="@(() => ShowServiceDetails("Разработка ПО"))" />
+                    </RadzenCard>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-section">
+        <div class="glass-container">
+            <div class="container">
+                <RadzenText Class="section-title" Tag="h2">Как мы работаем</RadzenText>
+                <div class="cards-grid">
+                    <RadzenCard Class="glass-card">
+                        <RadzenText Class="service-title" Tag="h3">1. Консультация</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Обсуждаем ваши задачи и проводим первичный аудит.</RadzenText>
+                    </RadzenCard>
+                    <RadzenCard Class="glass-card">
+                        <RadzenText Class="service-title" Tag="h3">2. Проектирование</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Разрабатываем техническое решение и коммерческое предложение.</RadzenText>
+                    </RadzenCard>
+                    <RadzenCard Class="glass-card">
+                        <RadzenText Class="service-title" Tag="h3">3. Реализация</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Выполняем монтаж, настройку и разработку ПО.</RadzenText>
+                    </RadzenCard>
+                    <RadzenCard Class="glass-card">
+                        <RadzenText Class="service-title" Tag="h3">4. Поддержка</RadzenText>
+                        <RadzenText Class="process-title" Tag="p">Обеспечиваем техническую поддержку и развитие системы.</RadzenText>
+                    </RadzenCard>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section с фоновым изображением -->
+<section id="contact" style="background: linear-gradient(rgba(100, 126, 234, 0.5), rgba(50, 102, 234, 0.5)), url('/images/contact-bg.jpg');
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              padding: 100px 0;
+              color: white;">
+    <div class="container">
+        <RadzenText Style="text-align: center; font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; color: white;" Tag="h2">Готовы к автоматизации?</RadzenText>
+        <RadzenText Style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: white; " Tag="p">Оставьте заявку, и наш специалист свяжется с вами в течение дня</RadzenText>
+
+        <RadzenRow JustifyContent="JustifyContent.Center">
+            <RadzenColumn Size="12" MD="6">
+                <EditForm Model="@contactForm" OnValidSubmit="@HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <RadzenStack>
+                        <div>
+                            <label>Ваше имя *</label>
+                            <RadzenTextBox @bind-Value="contactForm.Name" Style="width: 100%; margin-bottom: 1rem; background: rgba(255,255,255,0.9); color: white; border: 1px solid rgba(255,255,255,0.3);" />
+                            <ValidationMessage For="@(() => contactForm.Name)" />
+                        </div>
+                        <div>
+                            <label>Компания *</label>
+                            <RadzenTextBox @bind-Value="contactForm.Company" Style="width: 100%; margin-bottom: 1rem; background: rgba(255,255,255,0.9); color: white; border: 1px solid rgba(255,255,255,0.3);" />
+                            <ValidationMessage For="@(() => contactForm.Company)" />
+                        </div>
+                        <div>
+                            <label>Телефон *</label>
+                            <RadzenTextBox @bind-Value="contactForm.Phone" Style="width: 100%; margin-bottom: 1rem; background: rgba(255,255,255,0.9); color: white; border: 1px solid rgba(255,255,255,0.3);" />
+                            <ValidationMessage For="@(() => contactForm.Phone)" />
+                        </div>
+                        <div>
+                            <label>Сообщение</label>
+                            <RadzenTextArea @bind-Value="contactForm.Message" Style="width: 100%; margin-bottom: 1rem; background: rgba(255,255,255,0.9); color: white; border: 1px solid rgba(255,255,255,0.3);" Rows="4"></RadzenTextArea>
+                        </div>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Size="ButtonSize.Large" Text="Отправить заявку" Type="Submit" Icon="send" Style="width: 100%;" />
+                    </RadzenStack>
+                </EditForm>
+            </RadzenColumn>
+        </RadzenRow>
+    </div>
+
+    <!-- Footer -->
+    <footer style="padding: 40px 0;">
+        <div class="container">
+            <RadzenRow>
+                <RadzenColumn Size="12" MD="6">
+                    <RadzenText Style="font-size: 1.2rem; font-weight: 600;color: white;" Tag="h4">TermoTech Solutions</RadzenText>
+                    <RadzenText Style="color: white;" Tag="p">Технологии и автоматизация для элеваторной отрасли.</RadzenText>
+                </RadzenColumn>
+                <RadzenColumn Size="12" MD="6">
+                    <RadzenText Style="color: white;" Tag="h5">Контакты</RadzenText>
+                    <RadzenText Style="color: white;" Tag="p"><RadzenIcon Icon="phone" /> +7 (XXX) XXX-XX-XX</RadzenText>
+                    <RadzenText Style="color: white;" Tag="p"><RadzenIcon Icon="email" /> info@TermoTech.com</RadzenText>
+                    <RadzenText Style="color: white;" Tag="p"><RadzenIcon Icon="place" /> г. Москва, ул. Промышленная, 15</RadzenText>
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenRow Style="margin-top: 2rem; border-top: 1px solid #34495e; padding-top: 1rem;">
+                <RadzenColumn Size="12">
+                    <RadzenText Style="color: white; text-align: center; font-size: 0.9rem;" Tag="p">© @DateTime.Now.Year TermoTech Solutions. Все права защищены.</RadzenText>
+                </RadzenColumn>
+            </RadzenRow>
+        </div>
+    </footer>
+</section>
+
+
+
+@code {
+    private ContactForm contactForm = new ContactForm();
+
+    class ContactForm
+    {
+        [Required(ErrorMessage = "Введите имя")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Введите название компании")]
+        public string Company { get; set; }
+
+        [Required(ErrorMessage = "Введите телефон")]
+        public string Phone { get; set; }
+
+        public string Message { get; set; }
+    }
+
+    private async Task ScrollToSection(string elementId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToElement", elementId);
+    }
+
+    private void ShowServiceDetails(string serviceName)
+    {
+        NotificationService.Notify(NotificationSeverity.Info, $"Услуга: {serviceName}", "Свяжитесь с нами для получения подробной информации");
+    }
+
+    private void HandleValidSubmit()
+    {
+        NotificationService.Notify(NotificationSeverity.Success, "Заявка отправлена!", "Мы свяжемся с вами в ближайшее время.");
+        contactForm = new ContactForm();
+        StateHasChanged();
+    }
+}

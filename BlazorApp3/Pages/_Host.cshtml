@@ -1,0 +1,30 @@
+﻿@page "/"
+@namespace BlazorApp3.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<component type="typeof(App)" render-mode="ServerPrerendered" />
+<link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">
+<script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+
+<script>
+    function scrollToElement(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    // Обработка навигации по хешам
+    window.addEventListener('load', function () {
+        if (window.location.hash) {
+            const id = window.location.hash.substring(1);
+            setTimeout(() => scrollToElement(id), 100);
+        }
+    });
+</script>

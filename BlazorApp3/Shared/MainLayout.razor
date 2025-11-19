@@ -1,0 +1,109 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+
+<RadzenTheme Theme="material" />
+
+<div class="page">
+    <RadzenDialog />
+    <RadzenNotification />
+
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(rgba(102, 126, 234, 1) 0%, rgba(50, 102, 234, 1) 100%);">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <RadzenIcon Icon="precision_manufacturing" Class="brand-icon" />
+                    <span class="brand-text">TermoTech</span>
+                </a>
+            <button class="navbar-toggler" type="button" @onclick="ToggleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse @(navbarOpen ? "show" : "")" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" @onclick="CloseNavbar">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services" @onclick="CloseNavbar">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process" @onclick="CloseNavbar">Процесс</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" @onclick="CloseNavbar">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main style="margin-top: 76px;">
+        @Body
+    </main>
+</div>
+
+@code {
+    private bool navbarOpen = false;
+
+    private void ToggleNavbar()
+    {
+        navbarOpen = !navbarOpen;
+    }
+
+    private void CloseNavbar()
+    {
+        navbarOpen = false;
+    }
+}
+
+<style>
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+    }
+
+    .brand-icon {
+        margin-right: 15px;
+        font-size: 1.8rem;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        margin: 0 15px;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 1.1rem;
+    }
+
+    /* Адаптивность для мобильных */
+    @@media (max-width: 768px) {
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+
+        .brand-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            margin: 0 10px;
+        }
+    }
+
+    /* Для очень маленьких экранов */
+    @@media (max-width: 576px) {
+        .navbar-brand {
+            font-size: 1.3rem;
+        }
+
+        .brand-icon {
+            font-size: 1.3rem;
+            margin-right: 8px;
+        }
+    }
+</style>
