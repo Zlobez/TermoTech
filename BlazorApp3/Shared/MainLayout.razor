@@ -6,13 +6,13 @@
 <div class="page">
     <RadzenDialog />
     <RadzenNotification />
-
+    
     <!-- Навигационная панель -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(rgba(102, 126, 234, 1) 0%, rgba(50, 102, 234, 1) 100%);">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(rgba(27, 110, 194, 0.99) 0%, rgba(27, 110, 194, 0.99) 100%);">
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <RadzenIcon Icon="precision_manufacturing" Class="brand-icon" />
-                    <span class="brand-text">TermoTech</span>
+                <span class="brand-text" style="font-weight: 700; font-size: 2rem;">TermoTech</span>
                 </a>
             <button class="navbar-toggler" type="button" @onclick="ToggleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -20,16 +20,16 @@
             <div class="collapse navbar-collapse @(navbarOpen ? "show" : "")" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about" @onclick="CloseNavbar">О нас</a>
+                        <a class="nav-link" style="font-weight: 700; font-size: 1.5rem;" href="#about" @onclick="CloseNavbar">О нас</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services" @onclick="CloseNavbar">Услуги</a>
+                        <a class="nav-link" style="font-weight: 700; font-size: 1.5rem;" href="#services" @onclick="CloseNavbar">Услуги</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#process" @onclick="CloseNavbar">Процесс</a>
+                        <a class="nav-link" style="font-weight: 700; font-size: 1.5rem;" href="#process" @onclick="CloseNavbar">Процесс</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact" @onclick="CloseNavbar">Контакты</a>
+                        <a class="nav-link" style="font-weight: 700; font-size: 1.5rem;" href="#contact" @onclick="CloseNavbar">Контакты</a>
                     </li>
                 </ul>
             </div>
